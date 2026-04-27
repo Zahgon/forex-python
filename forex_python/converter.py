@@ -125,19 +125,14 @@ class CurrencyCodes:
 
     @property
     def _currency_data(self):
-        if self.__currency_data is None:
-            file_path = os.path.dirname(os.path.abspath(__file__))
-            with open(file_path + '/raw_data/currencies.json', encoding="utf-8") as f:
-                self.__currency_data = json.loads(f.read())
-        return self.__currency_data
+        pass
 
     def _get_data(self, currency_code):
         currency_dict = next((item for item in self._currency_data if item["cc"] == currency_code), None)
         return currency_dict
 
     def _get_data_from_symbol(self, symbol):
-        currency_dict = next((item for item in self._currency_data if item["symbol"] == symbol), None)
-        return currency_dict
+        pass
 
     def get_symbol(self, currency_code):
         currency_dict = self._get_data(currency_code)
@@ -152,10 +147,7 @@ class CurrencyCodes:
         return None
 
     def get_currency_code_from_symbol(self, symbol):
-        currency_dict = self._get_data_from_symbol(symbol)
-        if currency_dict:
-            return currency_dict.get('cc')
-        return None
+        pass
 
 
 _CURRENCY_CODES = CurrencyCodes()
